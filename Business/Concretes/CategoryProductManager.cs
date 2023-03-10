@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Business.BusinessRules.CategoryProduct;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
@@ -21,22 +22,27 @@ namespace Business.Concretes
 
         public void Add(CategoryProduct categoryProduct)
         {
-            throw new NotImplementedException();
+            _categoryProductDal.Add(categoryProduct);
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            return _categoryProductDal.Delete(id);
         }
 
         public List<CategoryProduct> GetAll()
         {
-            throw new NotImplementedException();
+            return _categoryProductDal.GetAll();
         }
 
-        public CategoryProduct GetById(int id)
+        public CategoryProduct? GetById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryProductDal.GetByID(id);
+        }
+
+        public CategoryProduct? GetByName(string name)
+        {
+            return _categoryProductDal.GetByName(name);
         }
     }
 }

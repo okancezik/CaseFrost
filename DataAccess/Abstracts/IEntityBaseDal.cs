@@ -10,8 +10,9 @@ namespace DataAccess.Abstracts
     public interface IEntityBaseDal<T> where T : class , IEntity , new()
     {
         void Add(T entity);
-        void Delete(int id);
+        bool Delete(int id);
         List<T> GetAll();
-        T GetByID(int id);
+        T? GetByID(int id);
+        T? GetByName(string name);
     }
 }

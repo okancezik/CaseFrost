@@ -12,7 +12,7 @@ namespace DataAccess.Concretes.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=LAPTOP-AOONRL05;Database=CaseWorkDatabase;Trusted_Connection=true;
+            optionsBuilder.UseSqlServer(@"Server=LAPTOP-AOONRL05;Database=CaseFrost;Trusted_Connection=true;
                                            TrustServerCertificate=True;");
 
         }

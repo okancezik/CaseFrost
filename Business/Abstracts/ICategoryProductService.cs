@@ -10,8 +10,9 @@ namespace Business.Abstracts
     public interface ICategoryProductService
     {
         void Add(CategoryProduct categoryProduct);
-        void Delete(int id);
+        bool Delete(int id);
         List<CategoryProduct> GetAll();
-        CategoryProduct GetById(int id);
+        CategoryProduct? GetById(int id);
+        CategoryProduct? GetByName(string name);
     }
 }

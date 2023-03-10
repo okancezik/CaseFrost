@@ -19,12 +19,27 @@ namespace DataAccess.Concretes.EntityFramework
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             using(MyDbContext dbContext = new MyDbContext())
             {
                 var result = this.GetByID(id);
-                dbContext.Set<CategoryProduct>().Remove(result);
+                if(result != null)
+                {
+                    dbContext.Set<CategoryProduct>().Remove(result);
+                    dbContext.SaveChanges() ;
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool ExistProductCategory(string categoryName)
+        {
+            using(MyDbContext dbContext = new MyDbContext())
+            {
+                var result = dbContext.Set<CategoryProduct>().FirstOrDefault(cp => cp.CategoryName == categoryName);
+                return result == null ? false : true;
             }
         }
 
@@ -36,11 +51,19 @@ namespace DataAccess.Concretes.EntityFramework
             }
         }
 
-        public CategoryProduct GetByID(int id)
+        public CategoryProduct? GetByID(int id)
         {
             using(MyDbContext dbContext = new MyDbContext())
             {
-                return dbContext.Set<CategoryProduct>().First(cp => cp.CategoryID == id);
+                return dbContext.Set<CategoryProduct>().FirstOrDefault(cp => cp.CategoryProductID == id);
+            }
+        }
+
+        public CategoryProduct? GetByName(string name)
+        {
+            using(MyDbContext dbContext = new MyDbContext())
+            {
+                return dbContext.Set<CategoryProduct>().FirstOrDefault(cp => cp.CategoryName == name);
             }
         }
     }

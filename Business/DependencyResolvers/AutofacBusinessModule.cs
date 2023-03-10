@@ -18,6 +18,9 @@ namespace Business.DependencyResolvers
             //ICategoryProductService gibi bir instance istendiğinde CategoryProductManager instance'ı üretilir
             builder.RegisterType<CategoryProductManager>().As<ICategoryProductService>().SingleInstance();
             builder.RegisterType<CategoryProductDal>().As<ICategoryProductDal>().SingleInstance();
+            builder.RegisterType<CategoryDiscountDal>().As<ICategoryDiscountDal>().SingleInstance();
+            builder.RegisterType<CategoryDiscountManager>().As<ICategoryDiscountService>().SingleInstance();
+
         }
     }
 }

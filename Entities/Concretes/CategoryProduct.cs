@@ -9,7 +9,7 @@ namespace Entities.Concretes
 {
     public class CategoryProduct : IEntity
     {
-        public int CategoryID { get; set; }
+        public int CategoryProductID { get; set; }
         public string CategoryName { get; set; }
     }
 }

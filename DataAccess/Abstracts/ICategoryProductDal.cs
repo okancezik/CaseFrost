@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using DataAccess.Concretes.EntityFramework;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace DataAccess.Abstracts
 {
     public interface ICategoryProductDal : IEntityBaseDal<CategoryProduct>
     {
+        bool ExistProductCategory(string categoryName);
     }
 }
