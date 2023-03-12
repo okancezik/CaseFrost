@@ -50,5 +50,12 @@ namespace Web_API.Controllers
             var result = _productService.GetByName(name);
             return result != null ? Ok(result) : NotFound();
         }
+
+        [HttpGet(Name ="GetAllProductsDetails")]
+        public IActionResult GetAllProductsDetails()
+        {
+            var result = _productService.GetAllDetails();
+            return Ok(result);
+        }
     }
 }

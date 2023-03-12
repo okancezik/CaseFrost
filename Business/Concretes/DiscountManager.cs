@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Concretes.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,11 @@ namespace Business.Concretes
         public List<Discount> GetAllCurrentDiscount()
         {
             return _discountDal.GetAll(d => d.DiscountState == true);
+        }
+
+        public List<DiscountDetailsDTO> GetAllDetails()
+        {
+            return _discountDal.GetAllDiscountDetails();
         }
 
         public Discount? GetById(int id)

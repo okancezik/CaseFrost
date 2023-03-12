@@ -1,4 +1,5 @@
 ﻿using Entities.Concretes;
+using Entities.Concretes.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Business.Abstracts
         Discount? GetByName(string name);
         bool UpdateDiscountTurnOn(int id);
         bool UpdateDiscountTurnOff(int id);
+        List<DiscountDetailsDTO> GetAllDetails();
 
     }
 }

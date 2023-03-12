@@ -1,4 +1,5 @@
 ﻿using Entities.Concretes;
+using Entities.Concretes.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace Business.Abstracts
         List<Product> GetAll();
         Product? GetById(int id);
         Product? GetByName(string name);
+        List<ProductDetailsDTO> GetAllDetails();
     }
 }

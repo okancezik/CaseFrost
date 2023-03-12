@@ -63,5 +63,12 @@ namespace Web_API.Controllers
             var result = _discountService.UpdateDiscountTurnOff(id);
             return result == true ? Ok() : NotFound();
         }
+
+        [HttpGet(Name ="GetAllDiscountDetails")]
+        public IActionResult GetAllDiscountDetails()
+        {
+            var result = _discountService.GetAllDetails();
+            return Ok(result);
+        }
     }
 }

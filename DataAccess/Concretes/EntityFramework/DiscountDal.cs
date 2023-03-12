@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Concretes.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,6 +80,30 @@ namespace DataAccess.Concretes.EntityFramework
                     return true;
                 }
                 return false;
+            }
+        }
+
+        public List<DiscountDetailsDTO> GetAllDiscountDetails(Expression<Func<DiscountDetailsDTO, bool>> filter = null)
+        {
+            using(MyDbContext dbContext = new MyDbContext())
+            {
+                var result = from d in dbContext.Set<Discount>()
+                             join cd in dbContext.Set<CategoryDiscount>()
+                             on d.CategoryID equals cd.CategoryDiscountID
+                             select new DiscountDetailsDTO
+                             {
+                                 DiscountName = d.DiscountName,
+                                 DiscountCategoryName = cd.CategoryName,
+                                 DiscountState = d.DiscountState,
+                                 DiscountStartDate = d.DiscountStartDate,
+                                 DiscountEndDate = d.DiscountEndDate
+                             };
+
+                if(filter == null)
+                {
+                    return result.ToList();
+                }
+                return result.Where(filter).ToList();
             }
         }
     }

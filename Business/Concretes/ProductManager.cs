@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Concretes.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,11 @@ namespace Business.Concretes
         public List<Product> GetAll()
         {
             return _productDal.GetAll();
+        }
+
+        public List<ProductDetailsDTO> GetAllDetails()
+        {
+            return _productDal.GetAllProductDetails();
         }
 
         public Product? GetById(int id)
