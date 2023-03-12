@@ -36,12 +36,12 @@ namespace Business.Concretes
 
         public CategoryDiscount? GetById(int id)
         {
-            return _categoryDiscountDal.GetByID(id);
+            return _categoryDiscountDal.Get(cd => cd.CategoryDiscountID == id);
         }
 
         public CategoryDiscount? GetByName(string name)
         {
-            return _categoryDiscountDal.GetByName(name);
+            return _categoryDiscountDal.Get(cd => cd.CategoryName == name);
         }
     }
 }

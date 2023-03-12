@@ -37,12 +37,12 @@ namespace Business.Concretes
 
         public CategoryProduct? GetById(int id)
         {
-            return _categoryProductDal.GetByID(id);
+            return _categoryProductDal.Get(cp => cp.CategoryProductID == id);
         }
 
         public CategoryProduct? GetByName(string name)
         {
-            return _categoryProductDal.GetByName(name);
+            return _categoryProductDal.Get(cp => cp.CategoryName == name);   
         }
     }
 }

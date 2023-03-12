@@ -9,5 +9,7 @@ namespace DataAccess.Abstracts
 {
     public interface IDiscountDal : IEntityBaseDal<Discount>
     {
+        bool UpdateDiscountStateTurnOn(int id);
+        bool UpdateDiscountStateTurnOff(int id);
     }
 }

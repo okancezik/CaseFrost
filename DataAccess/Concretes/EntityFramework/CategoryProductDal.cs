@@ -3,6 +3,7 @@ using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace DataAccess.Concretes.EntityFramework
         {
             using(MyDbContext dbContext = new MyDbContext())
             {
-                var result = this.GetByID(id);
+                var result = this.Get(cp => cp.CategoryProductID == id);
                 if(result != null)
                 {
                     dbContext.Set<CategoryProduct>().Remove(result);
@@ -43,27 +44,21 @@ namespace DataAccess.Concretes.EntityFramework
             }
         }
 
-        public List<CategoryProduct> GetAll()
+        public CategoryProduct? Get(Expression<Func<CategoryProduct, bool>> filter)
         {
-            using(MyDbContext dbContext = new MyDbContext())
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                return dbContext.Set<CategoryProduct>().ToList();
+                return dbContext.Set<CategoryProduct>().FirstOrDefault(filter);
             }
         }
 
-        public CategoryProduct? GetByID(int id)
+        public List<CategoryProduct> GetAll(Expression<Func<CategoryProduct, bool>> filter = null)
         {
-            using(MyDbContext dbContext = new MyDbContext())
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                return dbContext.Set<CategoryProduct>().FirstOrDefault(cp => cp.CategoryProductID == id);
-            }
-        }
+                return filter == null ? dbContext.Set<CategoryProduct>().ToList()
+                    : dbContext.Set<CategoryProduct>().Where(filter).ToList();
 
-        public CategoryProduct? GetByName(string name)
-        {
-            using(MyDbContext dbContext = new MyDbContext())
-            {
-                return dbContext.Set<CategoryProduct>().FirstOrDefault(cp => cp.CategoryName == name);
             }
         }
     }

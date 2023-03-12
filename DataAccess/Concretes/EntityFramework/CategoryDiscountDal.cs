@@ -3,6 +3,7 @@ using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,9 +22,9 @@ namespace DataAccess.Concretes.EntityFramework
 
         public bool Delete(int id)
         {
-            using(MyDbContext dbContext = new MyDbContext())
+            using (MyDbContext dbContext = new MyDbContext())
             {
-                var result = this.GetByID(id);
+                var result = this.Get(cd => cd.CategoryDiscountID == id);
                 if (result != null)
                 {
                     dbContext.Set<CategoryDiscount>().Remove(result);
@@ -31,6 +32,14 @@ namespace DataAccess.Concretes.EntityFramework
                     return true;
                 }
                 return false;
+            }
+        }
+
+        public CategoryDiscount? Get(Expression<Func<CategoryDiscount, bool>> filter)
+        {
+            using (MyDbContext dbContext = new MyDbContext())
+            {
+                return dbContext.Set<CategoryDiscount>().FirstOrDefault(filter);
             }
         }
 
@@ -42,20 +51,14 @@ namespace DataAccess.Concretes.EntityFramework
             }
         }
 
-        public CategoryDiscount? GetByID(int id)
-        {
-           using(MyDbContext dbContext = new MyDbContext())
-            {
-                return dbContext.Set<CategoryDiscount>().FirstOrDefault(cd => cd.CategoryDiscountID == id);
-            }
-        }
-
-        public CategoryDiscount? GetByName(string name)
+        public List<CategoryDiscount> GetAll(Expression<Func<CategoryDiscount, bool>> filter = null)
         {
             using(MyDbContext dbContext = new MyDbContext())
             {
-                return dbContext.Set<CategoryDiscount>().FirstOrDefault(cd => cd.CategoryName == name);
+                return filter == null ? dbContext.Set<CategoryDiscount>().ToList() : dbContext.Set<CategoryDiscount>().Where(filter).ToList();
             }
         }
+
+        
     }
 }

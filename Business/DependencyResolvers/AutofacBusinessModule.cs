@@ -20,6 +20,10 @@ namespace Business.DependencyResolvers
             builder.RegisterType<CategoryProductDal>().As<ICategoryProductDal>().SingleInstance();
             builder.RegisterType<CategoryDiscountDal>().As<ICategoryDiscountDal>().SingleInstance();
             builder.RegisterType<CategoryDiscountManager>().As<ICategoryDiscountService>().SingleInstance();
+            builder.RegisterType<DiscountDal>().As<IDiscountDal>().SingleInstance();
+            builder.RegisterType<DiscountManager>().As<IDiscountService>().SingleInstance();
+            builder.RegisterType<ProductDal>().As<IProductDal>().SingleInstance();
+            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
 
         }
     }
