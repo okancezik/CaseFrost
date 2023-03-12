@@ -13,6 +13,7 @@ namespace Entities.Concretes
         public int CategoryID { get; set; }
         public string DiscountName { get; set; }
         public bool DiscountState { get; set; }
+        public double DiscountPercentage { get; set; }
         public DateTime DiscountStartDate { get; set; }
         public DateTime DiscountEndDate { get; set; }
     }
