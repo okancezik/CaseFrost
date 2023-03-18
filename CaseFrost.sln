@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{5250811D-7340-4C57-A431-D2E7B3560D44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web API", "Web API\Web API.csproj", "{2922D111-C529-4EF5-86D0-4938F7FC02E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web API", "Web API\Web API.csproj", "{2922D111-C529-4EF5-86D0-4938F7FC02E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{00868CC4-5BBC-4756-AF25-95425A95C9CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2922D111-C529-4EF5-86D0-4938F7FC02E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2922D111-C529-4EF5-86D0-4938F7FC02E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2922D111-C529-4EF5-86D0-4938F7FC02E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00868CC4-5BBC-4756-AF25-95425A95C9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00868CC4-5BBC-4756-AF25-95425A95C9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00868CC4-5BBC-4756-AF25-95425A95C9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00868CC4-5BBC-4756-AF25-95425A95C9CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

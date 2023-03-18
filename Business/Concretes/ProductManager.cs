@@ -1,7 +1,11 @@
 ﻿using Business.Abstracts;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofacs.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using Entities.Concretes.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +24,11 @@ namespace Business.Concretes
             _productDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
         public void Add(Product product)
         {
+
+            //ValidationTool.Validate(new ProductValidator(),product);
             _productDal.Add(product);
         }
 

@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Business.Abstracts;
 using Business.Concretes;
+using Castle.DynamicProxy;
+using Core.Utilites.Interceptors;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 using System;
@@ -24,6 +27,16 @@ namespace Business.DependencyResolvers
             builder.RegisterType<DiscountManager>().As<IDiscountService>().SingleInstance();
             builder.RegisterType<ProductDal>().As<IProductDal>().SingleInstance();
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
+
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()
+                }).SingleInstance();
+
 
         }
     }
